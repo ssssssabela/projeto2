@@ -29,11 +29,12 @@ function zoomInOut(image, zoomIn) {
     var newScale = zoomIn ? currentScale * 1.2 : 1;
     image.style.transform = 'scale(' + newScale + ')';
 }
-$(document).ready(function(){
-  $('.carrossel').slick({
-      slidesToShow: 5,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 2000,
-  });
+
+$(document).ready(function () {
+  Swal.fire({
+      title: 'Bem vindo a Ticket cine',
+      text: 'Aqui você tem uma vasta seleção de filmes para todos os gostos e idades! ',
+      confirmButtonText: 'Ok',
+      iconHtml: '<img src="Logo/Logo.jpg" class="custom-icon"> ',
+  })
 });
