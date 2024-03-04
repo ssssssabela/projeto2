@@ -148,6 +148,11 @@ section{
     text-transform: uppercase;
     border-bottom: 1px solid var(--main-color);
 }
+.titulo-filme{
+    margin-top: 35px;
+    margin-bottom: 20px;
+
+}
 .movies-container{
     max-width: 968px;
     margin-left: auto;
@@ -167,12 +172,6 @@ section{
     height: 100%;
     object-fit: cover;
     border-radius: 5%;
-}
-
-.titulo-filme{
-    margin-top: 35px;
-    margin-bottom: 20px;
-
 }
 
 
