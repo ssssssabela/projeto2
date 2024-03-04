@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ticket Booking</title>
+    <link rel="stylesheet" href="lugares.css">
+    <!--link css icons-->
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <!--link css slide-->
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <header>
+        <a href="./principal.html" class="logo">
+            <i class='bx bx-camera-movie'></i>TicketCine
+        </a>s
+    </header>
+    <div class="center">
+        <div class="tickets">
+          <div class="ticket-selector">
+            <div class="head">
+              <div class="title">Duna- Parte 2</div>
+            </div>
+            <div class="seats">
+              <div class="status">
+                <div class="item">Available</div>
+                <div class="item">Booked</div>
+                <div class="item">Reservador</div>
+              </div>
+              <div class="all-seats">
+                <input type="checkbox" name="tickets" id="s1" />
+                <label for="s1" class="seat booked"></label>
+              </div>
+            </div>
+          </div>
+          <div class="price">
+                <div class="total">
+                <span>Ingressos: <span class="count">0</span></span>
+                <div class="amount">0</div>
+                </div>
+                <button  id="btnn">Pagar</button>
+          </div>
+        </div>
+    </div>
+    <script>
+      let seats = document.querySelector(".all-seats");
+      for (var i = 0; i < 59; i++) {
+        let randint = Math.floor(Math.random() * 2);
+        let booked = randint === 1 ? "booked" : "";
+        seats.insertAdjacentHTML(
+          "beforeend",
+          '<input type="checkbox" name="tickets" id="s' +
+            (i + 2) +
+            '" /><label for="s' +
+            (i + 2) +
+            '" class="seat ' +
+            booked +
+            '"></label>'
+        );
+      }
+
+      let tickets = seats.querySelectorAll("input");
+      tickets.forEach((ticket) => {
+        ticket.addEventListener("change", () => {
+          let amount = document.querySelector(".amount").innerHTML;
+          let count = document.querySelector(".count").innerHTML;
+          amount = Number(amount);
+          count = Number(count);
+
+          if (ticket.checked) {
+            count += 1;
+            amount += 200;
+          } else {
+            count -= 1;
+            amount -= 200;
+          }
+          document.querySelector(".amount").innerHTML = amount;
+          document.querySelector(".count").innerHTML = count;
+        });
+      });
+    
+      $(document).ready(function() {
+        $('#btnn').on('click', function() {
+            showInsertAlert();
+        });
+
+        function showInsertAlert() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Compra aprovada com sucesso!'
+            });
+        }
+    });
+    </script>
+  </body>
+</html>
