@@ -11,10 +11,12 @@
     <!--link css slide-->
     <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
     <header>
-        <a href="principal.css" class="logo">
+        <a href="./principal.html" class="logo">
             <i class='bx bx-camera-movie'></i>TicketCine
         </a>
         <div class="bx bx-menu" id="menu-icon"></div>
@@ -42,7 +44,7 @@
                 <span>Ingressos: <span class="count">0</span></span>
                 <div class="amount">0</div>
                 </div>
-                <button id="btnn">Pagar</button>
+                <button  id="btnn">Pagar</button>
           </div>
         </div>
     </div>
@@ -82,14 +84,19 @@
           document.querySelector(".count").innerHTML = count;
         });
       });
-      btn = document.getElementById('btnn');
+    
+      $(document).ready(function() {
+        $('#btnn').on('click', function() {
+            showInsertAlert();
+        });
 
-      btn.addEventListener('click', function() {
-        var b = confirm('Obrigada por comprar seu ingresso conosco! Evetue seu pagamento no local do evento. Sua presença ja foi registrada');
-        if (b){
-          window.location = "file:///C:/Users/Micro/Projeto2/principal.html";
+        function showInsertAlert() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Compra aprovada com sucesso!'
+            });
         }
-      }); 
+    });
     </script>
   </body>
 </html>
